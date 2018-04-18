@@ -6,7 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -19,24 +19,27 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="kTableViewCell" id="gfd-wb-Pqj" customClass="TableViewCell">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="kTableViewCell" id="gfd-wb-Pqj" customClass="TableViewCell">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="gfd-wb-Pqj" id="gzg-cB-ivO">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="这是UILabel，Num=" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wRZ-B6-oSj">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="这是UILabel，Num=" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wRZ-B6-oSj">
                                             <rect key="frame" x="16" y="11" width="157" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="wRZ-B6-oSj" firstAttribute="centerY" secondItem="gzg-cB-ivO" secondAttribute="centerY" id="Q8I-3h-ygr"/>
+                                        <constraint firstItem="wRZ-B6-oSj" firstAttribute="leading" secondItem="gzg-cB-ivO" secondAttribute="leadingMargin" id="Scf-qq-vZx"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="textLabel" destination="wRZ-B6-oSj" id="9qx-mD-bNy"/>
+                                    <outlet property="label" destination="wRZ-B6-oSj" id="F7T-sK-NVu"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -46,18 +49,16 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="EmtpyView" id="9Yy-HT-Bmr">
-                        <rightBarButtonItems>
-                            <barButtonItem title="加数据" id="xeV-C8-Ec0">
-                                <connections>
-                                    <action selector="addData:" destination="hyM-Ev-fUn" id="1oH-OJ-YZq"/>
-                                </connections>
-                            </barButtonItem>
-                            <barButtonItem title="清空" id="8JA-06-Tlb">
-                                <connections>
-                                    <action selector="clearData:" destination="hyM-Ev-fUn" id="YjT-ju-TFV"/>
-                                </connections>
-                            </barButtonItem>
-                        </rightBarButtonItems>
+                        <barButtonItem key="leftBarButtonItem" title="清空" id="8JA-06-Tlb">
+                            <connections>
+                                <action selector="clearData:" destination="hyM-Ev-fUn" id="YjT-ju-TFV"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="加数据" id="xeV-C8-Ec0">
+                            <connections>
+                                <action selector="addData:" destination="hyM-Ev-fUn" id="1oH-OJ-YZq"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                 </tableViewController>

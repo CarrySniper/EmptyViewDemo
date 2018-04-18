@@ -6,7 +6,7 @@ target 'EmptyViewDemo' do
   # use_frameworks!
   pod 'Aspects'
   pod 'Masonry'
-  pod 'DZNEmptyDataSet'
+  
   # Pods for EmptyViewDemo
 
   target 'EmptyViewDemoTests' do

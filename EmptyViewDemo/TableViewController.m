@@ -66,7 +66,7 @@
     TableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"kTableViewCell" forIndexPath:indexPath];
     
     // Configure the cell...
-    cell.textLabel.text = _dataArray[indexPath.row];
+    cell.label.text = _dataArray[indexPath.row];
     
     return cell;
 }
