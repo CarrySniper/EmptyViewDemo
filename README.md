@@ -1,7 +1,8 @@
 # EmptyViewDemo
-列表没有数据的时候显示自定义View提示。适用于UITableView、UICollectionView。
+列表没有数据的时候显示自定义View提示。适用于UITableView、UICollectionView。<br>
+有使用第三方库Aspects和Masonry
 
-##截图
+## 截图
 ![](https://github.com/cjq002/EmptyViewDemo/raw/master/IMAGE/demo.png) 
  
 ## 使用方法
