@@ -1,0 +1,18 @@
+PODS:
+  - Aspects (1.4.1)
+  - DZNEmptyDataSet (1.8.1)
+  - Masonry (1.1.0)
+
+DEPENDENCIES:
+  - Aspects
+  - DZNEmptyDataSet
+  - Masonry
+
+SPEC CHECKSUMS:
+  Aspects: 7595ba96a6727a58ebcbfc954497fc5d2fdde546
+  DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
+  Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
+
+PODFILE CHECKSUM: 6fa00427f57be8282d0df619132e8916e96534a3
+
+COCOAPODS: 1.4.0
