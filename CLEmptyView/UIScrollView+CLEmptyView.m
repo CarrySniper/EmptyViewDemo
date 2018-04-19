@@ -9,7 +9,6 @@
 #import "UIScrollView+CLEmptyView.h"
 #import <objc/runtime.h>
 #import <Aspects/Aspects.h>
-#import <Masonry/Masonry.h>
 
 static char emptyDataSourceKey;
 static char emptyViewKey;
@@ -33,7 +32,6 @@ static char emptyViewKey;
          } error:NULL];
     }
 }
-
 
 #pragma mark - Getting
 - (id<CLEmptyDataSource>)emptyDataSource {
@@ -64,12 +62,27 @@ static char emptyViewKey;
         // 设置位置偏移
         CGPoint offset = [self emptyViewOffset];
         CGRect frame = view.frame;
-        [view mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.centerX.equalTo(self).offset(offset.x);
-            make.centerY.equalTo(self).offset(offset.y);
-            make.width.equalTo(@(frame.size.width));
-            make.height.equalTo(@(frame.size.height));
-        }];
+        
+        // 禁止将 AutoresizingMask 转换为 Constraints
+        view.translatesAutoresizingMaskIntoConstraints = NO;
+        
+        // 添加 centerX 约束
+        NSLayoutConstraint *centerXConstraint = [NSLayoutConstraint constraintWithItem:view attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:offset.x];
+        
+        // 添加 centerY 约束
+        NSLayoutConstraint *centerYConstraint = [NSLayoutConstraint constraintWithItem:view attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeCenterY multiplier:1.0 constant:offset.y];
+        
+        // 添加 width 约束
+        NSLayoutConstraint *widthConstraint = [NSLayoutConstraint constraintWithItem:view attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:0.0 constant:frame.size.width];
+
+        // 添加 height 约束
+        NSLayoutConstraint *heightConstraint = [NSLayoutConstraint constraintWithItem:view attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:0.0 constant:frame.size.height];
+        
+        //把约束添加到父视图上
+        NSArray *array = @[widthConstraint, heightConstraint, centerXConstraint, centerYConstraint];
+        [self addConstraints:array];
+        
+        
         NSLog(@"没有数据，显示空数据UI");
     }else{
     }

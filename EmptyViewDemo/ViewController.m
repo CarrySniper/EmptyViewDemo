@@ -1,32 +1,32 @@
 //
-//  TableViewController.m
+//  ViewController.m
 //  EmptyViewDemo
 //
-//  Created by CJQ on 2018/4/18.
+//  Created by CJQ on 2018/4/19.
 //  Copyright © 2018年 CJQ. All rights reserved.
 //
 
-#import "TableViewController.h"
+#import "ViewController.h"
 #import "TableViewCell.h"
 #import "UIScrollView+CLEmptyView.h"
 #import "CLEmtpyView.h"
 
-@interface TableViewController ()<CLEmptyDataSource>
+@interface ViewController ()<UITableViewDelegate, UITableViewDataSource, CLEmptyDataSource>
+
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSMutableArray *dataArray;
+
 @end
 
-@implementation TableViewController
+@implementation ViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    // Do any additional setup after loading the view.
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     self.tableView.tableFooterView = [UIView new];
     self.tableView.emptyDataSource = self;
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -43,6 +43,7 @@
     [_dataArray addObject:[NSString stringWithFormat:@"这是UILabel，Num=%d", arc4random()]];
     [self.tableView reloadData];
 }
+
 - (IBAction)clearData:(id)sender {
     [_dataArray removeAllObjects];
     [self.tableView reloadData];
@@ -57,7 +58,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-
+    
     return _dataArray.count;
 }
 
@@ -96,40 +97,6 @@
 - (CGPoint)cl_emptyViewOffset:(UIScrollView *)scrollView {
     return CGPointMake(0, 0);
 }
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
 
 /*
 #pragma mark - Navigation
